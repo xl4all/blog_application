@@ -1,0 +1,34 @@
+doctype html
+html
+	head
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css")
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+	body
+		nav.teal.lighten-2
+			ul#nav-mobile.right.hide-on-med-and-down
+				li: a(href='/') Home
+				li: a(href='/users/' + user.username) Profile
+				li: a(href='/posts/user') My Posts
+				li.active: a(href='#') All Posts
+				li: a(href='/logout') Logout
+
+		div.container
+			h2: a.black-text(href='/posts/new') Create New Post
+			if postList.length != 0
+					each post in postList
+						each postUser in users
+							if postUser.id === post.userId
+								div.row
+									div.col.s12
+										div.card.blue-grey.darken-1
+											div.card-content.white-text
+												ul
+													h3: a(href='/posts/' + post.id): li.white-text #{post.title}
+													li Click the title to view the post in more detail
+													li.chip Posted by: #{postUser.username}
+													br
+			else
+				h1 No posts yet!
+					br
+				script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js")

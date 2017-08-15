@@ -1,0 +1,21 @@
+doctype html
+html
+	head
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css")
+	body
+		nav.teal.lighten-2
+			ul#nav-mobile.right.hide-on-med-and-down
+				li: a(href='/') Home
+				li.active: a(href='#') Register Here
+				
+		div.container
+			h3 Sign up form
+				form.col.s12(action='/register', method='POST', autocomplete='off')
+					input(type='text', name='username',placeholder='Enter your username', required)
+					input(type='email', name='email', placeholder='Enter your email' required)
+					input(type='password', name='password', placeholder='Choose a password' required)
+					button.btn(type="submit", name="submit") Create New Account
+			br
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js")
