@@ -5,7 +5,7 @@ html
 		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css")
 	body
-		nav.teal.lighten-2
+		nav.blue.lighten-2
 			ul#nav-mobile.right.hide-on-med-and-down
 				li: a(href='/') Home
 				li.active: a(href='#') Profile
@@ -15,7 +15,9 @@ html
 				
 		div.container
 			h1 Welcome #{user.username}
-			h2 Create Your New Blog Post
+			h4 Create Your New Blog Post!!!
+				br
+				br
 				form(action='/posts/new' method='post')
 					label title
 					br
@@ -25,6 +27,6 @@ html
 					br
 					textarea#body(minlength='5' rows="20" cols="50" name='body' placeholder='body' required)
 					br
-					input.btn(type='submit' value='Create Post' id='submit')
+					input.btn.blue.lighten-2(type='submit' value='Create Post' id='submit')
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js")
 

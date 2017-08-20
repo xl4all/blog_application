@@ -4,9 +4,9 @@ html
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css")
-			
 	body
-		nav.teal.lighten-1
+		h1 BLOG
+		nav.blue.lighten-2
 			ul#nav-mobile.right.hide-on-med-and-down
 				if user
 					li.active: a(href='#') Home
@@ -14,20 +14,23 @@ html
 					li: a(href='/posts/user') My Posts
 					li: a(href='/posts') All Posts
 					li: a(href='/logout') Logout
-
 				else
-					li Blog
 					li: a(href='/register') Register Here
-
 		div.container
 			if user
 				h1 Welcome to the Homepage!
-			else
+			else					
 				form(action='/login' method='post')
+					br
+					br
+					br
+					br
 					label username
 					input#username(name='username' required)
 					label password
 					input#password(type='password' name='password' required)
-					input.btn(type='submit' value='login' id='submit')
+					br
+					br
+					input.btn.blue.lighten-2(type='submit' value='login' id='submit')
 			h2#error-message= message
 			script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js")

@@ -93,7 +93,7 @@ app.post('/register', (req,res) => {//pugfile form register verwijst naar deze p
   })
   .then((user) => {//user is alle data van de vorige stap...
     req.session.user = user;//zodra user is gecreeert wordt de req.session.user de user di zojuist is gemaakt
-    res.redirect(`/users/${user.username}`)//babel gebruiken om bacticks te kunnen lezen...om een variabele in een string te plaatsten hebben we es6 nodig
+    res.redirect(`/users/${user.username}`)//babel gebruiken om backticks te kunnen lezen...om een variabele in een string te plaatsten hebben we es6 nodig
   })
 });
 
@@ -101,7 +101,7 @@ app.post('/register', (req,res) => {//pugfile form register verwijst naar deze p
 app.get('/users/:username', (req,res) => {//Dynamic routing. username regel 98 wordt vervangen door username in regel 93 u 
   const user = req.session.user;
   if (user === undefined) {//als er nooit eerder ingelogd, redirect naar /. Dus kan geen copy paste URL en dan plakken in andere computer.. 
-    res.redirect('/?message=' + encodeURIComponent("Please log in"));//?Homepaginaroute met message erachter. Alleen als je parameter in de URL wilt meegeven, anders kan je comp het niet lezen%% in de URL....
+    res.redirect('/?message=' + encodeURIComponent("Please log in"));//?Redirect naar de homepaginaroute als user is onbekend,met message erachter. Alleen als je parameter in de URL wilt meegeven, anders kan je comp het niet lezen%% in de URL....
   } else {
     res.render('profile', {
       user: user// je stuurt req.session.user mee uit regel 99. 
@@ -173,9 +173,6 @@ app.get('/posts', (req, res)=> {
   };
 });
 
-app.get('/posts/new', (req, res) => {
-  res.render('newpost');
-});
 
 app.post('/posts/new', (req, res) => {
   const user = req.session.user.username;
@@ -221,7 +218,7 @@ app.get('/posts/user', (req, res) => {
 
 app.get('/posts/:postId', function(req, res){
 	//const postId = req.params.postId;
-  const postId = req.params.postid;
+  const postId = req.params.postId;
   const user = req.session.user;        //creating page for each individual post
 	if (user === undefined) {           //checking if user is logged in
         res.redirect('/?message=' + encodeURIComponent("Please log in."));
@@ -230,7 +227,7 @@ app.get('/posts/:postId', function(req, res){
     .then((users) => {
       Posts.findOne({
         where: {
-          id: postid  
+          id: postId  
           // id: postId          //finding all users and posts, including comments in the posts
         },
         include: [{
@@ -275,6 +272,6 @@ app.post('/comments', (req, res) => {
   };
 });
 
-const server = app.listen(3000, () => {
+const server = app.listen(3001, () => {
   console.log('Example app listening on port: ' + server.address().port);
 })

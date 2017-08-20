@@ -5,7 +5,7 @@ html
 		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css")
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 	body
-		nav.teal.lighten-2
+		nav.blue.lighten-2
 			ul#nav-mobile.right.hide-on-med-and-down
 				li: a(href='/') Home
 				li: a(href='/users/' + user.username) Profile
@@ -14,7 +14,7 @@ html
 				li: a(href='/logout') Logout
 
 		div.container
-			h2: a.black-text(href='/posts/new') Create New Post
+			h2 All Post
 			if postList.length != 0
 					each post in postList
 						each postUser in users
